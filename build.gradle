@@ -4,12 +4,12 @@ android {
     compileSdkVersion 34 // Use the latest version available
 
     defaultConfig {
-        minSdkVersion 21 // Set the minimum SDK version your library supports
+        minSdkVersion 21 // Minimum SDK version your library supports
         targetSdkVersion 34 // Target the latest SDK version
         versionCode 1 // Version code for your library
         versionName "0.1" // Version name for your library
 
-        // Optionally, specify Java compatibility
+        // Specify the Java compatibility
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas"]
@@ -17,16 +17,9 @@ android {
         }
     }
 
-    // Configure packaging options, if necessary
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/NOTICE'
-    }
-
     buildTypes {
         release {
-            minifyEnabled false // Disable minification if not needed
+            minifyEnabled false // Disable minification for release build
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -36,9 +29,11 @@ android {
 }
 
 dependencies {
-    // Add any dependencies your library requires
-    implementation 'androidx.appcompat:appcompat:1.6.1' // Example dependency
-    implementation 'com.google.code.gson:gson:2.10.1' // Example dependency for JSON handling
+    // Example dependencies for the library
+    implementation 'androidx.appcompat:appcompat:1.6.1' // Support library for compatibility
+    implementation 'com.google.code.gson:gson:2.10.1' // Example for JSON handling
+
+    // Add other dependencies as needed
 }
 
 // Optionally, specify repositories
@@ -46,4 +41,3 @@ repositories {
     google()
     mavenCentral()
 }
-
