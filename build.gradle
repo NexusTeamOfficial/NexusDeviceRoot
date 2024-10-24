@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 34 // Use the latest version available
+
+    defaultConfig {
+        minSdkVersion 21 // Set the minimum SDK version your library supports
+        targetSdkVersion 34 // Target the latest SDK version
+        versionCode 1 // Version code for your library
+        versionName "0.1" // Version name for your library
+
+        // Optionally, specify Java compatibility
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas"]
+            }
+        }
+    }
+
+    // Configure packaging options, if necessary
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false // Disable minification if not needed
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Any debug-specific configurations can go here
+        }
+    }
+}
+
+dependencies {
+    // Add any dependencies your library requires
+    implementation 'androidx.appcompat:appcompat:1.6.1' // Example dependency
+    implementation 'com.google.code.gson:gson:2.10.1' // Example dependency for JSON handling
+}
+
+// Optionally, specify repositories
+repositories {
+    google()
+    mavenCentral()
+}
+
