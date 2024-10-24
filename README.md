@@ -14,4 +14,4 @@ NexusDeviceRoot is an Android library that simplifies rooting and managing devic
 To include NexusDeviceRoot in your project, add the following dependency to your `build.gradle` file:
 
 ```groovy
-implementation 'com.nexusteam:nexusdeviceroot:0.1'  // Replace with the latest version
+implementation 'com.nexusteam:nexusdeviceroot:0.1'
