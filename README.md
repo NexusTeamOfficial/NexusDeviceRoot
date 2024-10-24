@@ -7,7 +7,7 @@ NexusDeviceRoot is an Android library that simplifies rooting and managing devic
 - **Easy Root Management**: Simplifies the process of checking and managing root access.
 - **Permission Handling**: Easily manage permissions for rooted applications.
 - **Device Compatibility**: Works across various Android devices with rooting capabilities.
-
+### repository 
 - allprojects {
 		repositories {
 			...
