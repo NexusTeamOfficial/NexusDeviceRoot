@@ -123,4 +123,8 @@ public class NexusDeviceRoot {
         String buildTags = android.os.Build.TAGS;
         return buildTags != null && buildTags.contains("test-keys");
     }
+    public void performAction() {
+        // Implement your library's functionality here
+        System.out.println("Action performed by NexusDeviceRoot!");
+    }
 }
