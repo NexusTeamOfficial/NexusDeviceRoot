@@ -1,1 +1,3 @@
+include ':NexusDeviceRoot'
 include ':app'
+rootProject.name = "NexusDeviceRoot-App"
