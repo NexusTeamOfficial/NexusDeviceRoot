@@ -1,20 +1,37 @@
-// YourProject/build.gradle
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        // Add JitPack for GitHub dependencies
-        maven { url 'https://jitpack.io' }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0' // Check for latest version
-    }
+apply plugin: 'maven-publish'
+
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+def getVersionName = { ->
+    return "0.1"  // Replace with version name
 }
 
-allprojects {
+def getArtifactId = { ->
+    return "NexusDeviceRoot" // Replace with library name ID
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId 'com.nexusteam.nexusdeviceroot' // Replace with your group ID
+            artifactId getArtifactId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtifactId()}-release.aar")
+        }
+    }
+
     repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' } // JitPack repository
+        maven {
+            name = "GitHubPackages"
+            // Replace GITHUB_USERID with your GitHub user ID/organization and REPOSITORY with the GitHub repository name
+            url = uri("https://maven.pkg.github.com/NexusTeamOfficial/NexusDeviceRoot")
+
+            credentials {
+                // Load credentials from github.properties or environment variables
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
+        }
     }
 }
